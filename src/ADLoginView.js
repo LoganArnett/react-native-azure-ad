@@ -85,6 +85,7 @@ export default class ADLoginView extends React.Component {
     let renderError = this.props.renderError || function () { }
     return (
       this.state.visible ? (<WebView
+        useWebkit={true}
         ref="ADLoginView"
         automaticallyAdjustContentInsets={false}
         style={[this.props.style, {
@@ -220,8 +221,8 @@ export default class ADLoginView extends React.Component {
     log.verbose('ADLoginView get access token for resources=', resources)
 
 
-    /* NOTE: as of 11/15/2018, MS has changed the token behavior in that we cannot re-use the same auth-code more than once to get all the resource tokens. 
-    *  Instead we must use the refresh token result from the first token request to get other resource tokens. 
+    /* NOTE: as of 11/15/2018, MS has changed the token behavior in that we cannot re-use the same auth-code more than once to get all the resource tokens.
+    *  Instead we must use the refresh token result from the first token request to get other resource tokens.
     *  https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/whats-new#change-notice-authorization-codes-will-no-longer-be-available-for-reuse
     *  https://social.msdn.microsoft.com/Forums/en-US/4192e141-309a-4dd6-a5c9-f1a8ce32f4ca/aadsts54005-oauth2-authorization-code-was-already-redeemed?forum=WindowsAzureAD
     */
